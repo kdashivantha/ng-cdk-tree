@@ -1,0 +1,121 @@
+/* ------------------------------------
+/* ------------------------------------
+/*
+  angular cdk tree
+*/
+/* ------------------------------------*/
+/* ------------------------------------*/
+
+/* rem calculation */
+
+cdk-tree {
+  white-space: nowrap;
+
+  .tree-invisible {
+    display: none;
+  }
+
+  // .tree ul,
+  // .tree li {
+  //   margin-top: 0;
+  //   margin-bottom: 0;
+  //   list-style-type: none;
+  // }
+
+  .tree-node {
+    display: block;
+    font-weight: 400;
+    color: #428bca;
+    position: relative;
+
+    .toggle__arrow {
+      cursor: pointer;
+      position: absolute;
+      left: -25px;
+
+      svg {
+        fill: #428bca;
+        width: 32px;
+        height: 32px;
+        -webkit-transition: -webkit-transform;
+        transition: -webkit-transform;
+        transition: transform;
+        transition: transform, -webkit-transform;
+        -webkit-transition-duration: 0.2s;
+        transition-duration: 0.2s;
+        transform: rotate(0deg);
+      }
+
+      // &:after {
+      //   content: "";
+      //   position: absolute;
+      //   width: 20px;
+      //   height: 20px;
+      //   top: -2;
+      //   left: -4;
+      // }
+    }
+
+    .toggle__arrow--collaped {
+      svg {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+      }
+    }
+
+    .node-content-wrapper {
+      border: 1px solid transparent;
+      border-radius: 4px;
+      margin: 2px 5px;
+      padding-right: 5px;
+      cursor: pointer;
+      display: inline-block;
+      transition: background-color 0.15s, box-shadow 0.15s;
+
+      // span:after {
+      //   position: relative;
+      //   content: "";
+      //   top: -4px;
+      //   left: 0px;
+      //   width: 100%;
+      //   height: 100%;
+      //   padding: 12px;
+      // }
+
+      &:hover {
+        background-color: #ebebeb;
+      }
+    }
+
+    .node-content-wrapper--selected {
+      color: #fff;
+      background-color: #428bca;
+      border-color: #428bca;
+
+      &:hover {
+        background-color: #428bca;
+      }
+
+      svg {
+        fill: #fff !important;
+      }
+    }
+
+    .node-content-wrapper-active {
+      color: #fff;
+      background-color: #428bca;
+    }
+
+    input[type="checkbox"] {
+      display: inline;
+      height: 18px;
+      width: 18px;
+      top: -1px;
+      top: -0.1rem;
+    }
+  }
+
+  .tree-node div{
+    padding-left: 30px;
+  }
+}

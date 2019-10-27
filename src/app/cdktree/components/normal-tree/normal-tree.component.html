@@ -1,0 +1,34 @@
+<cdk-tree [dataSource]="TreeData" [treeControl]="treeControl">
+  <!-- This is the tree node template for leaf nodes -->
+  <cdk-nested-tree-node *cdkTreeNodeDef="let node" class="tree-node">
+    <!-- editable leaf nodes -->
+
+    <span class="treeitem__node node-content-wrapper"
+      [ngClass]="{ 'node-content-wrapper--selected': IsSelected(node) }">
+      <input type="checkbox" [(ngModel)]="node.Selected" />
+      <span (click)="ClickNode(node)">
+        {{ node.Name }}
+      </span>
+    </span>
+  </cdk-nested-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <cdk-nested-tree-node *cdkTreeNodeDef="let node; when: hasChild" class="tree-node">
+    <span cdkTreeNodeToggle class="toggle__arrow" (click)="node.Expanded = !node.Expanded"
+      [ngClass]="{ 'toggle__arrow--collaped': IsExpanded(node) }">
+      <svg viewBox="0 0 32 32" class="icon icon-chevron-right" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M18.629 15.997l-7.083-7.081L13.462 7l8.997 8.997L13.457 25l-1.916-1.916z" /></svg>
+    </span>
+
+    <span class="treeitem__node node-content-wrapper"
+      [ngClass]="{ 'node-content-wrapper--selected': IsSelected(node) }">
+      <input type="checkbox" [checked]="DescendantsAllSelected(node)"
+        [indeterminate]="DescendantsPartiallySelected(node)" (change)="ParentSelectionToggle(node)" />
+      <span (click)="ClickNode(node)">
+        {{ node.Name }}
+      </span>
+    </span>
+    <div [class.tree-invisible]="!IsExpanded(node)">
+      <ng-container cdkTreeNodeOutlet></ng-container>
+    </div>
+  </cdk-nested-tree-node>
+</cdk-tree>
