@@ -1,7 +1,7 @@
 # CdkTree
 
-CDK tree with checkboxes.
+CDK tree with checkbox check-states.
 
 all nodes are randomly generated.
 
-![](cdk-tree-with-checkboxes.gif)
+![](ng-cdk-tree.gif)
